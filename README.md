@@ -159,14 +159,14 @@ python -m pip install fastapi uvicorn websockets pydantic numpy pandas networkx
 
 ### Step 2: Verify Backend Simulation
 ```powershell
-python "d:\Anti gravity llm\CityLink\scripts\test_backend.py"
+
 ```
-*(All 8 test suites pass: Baseline, Motion, Congestion, Power Cascade, FDI Detection, AI Prediction, Mitigation, Reset).*
+
 
 ### Step 3: Run the Complete System
 In PowerShell:
 ```powershell
-powershell -ExecutionPolicy Bypass -File "d:\Anti gravity llm\CityLink\scripts\run_all.ps1"
+
 ```
 This automatically launches:
 - **FastAPI Backend**: `http://localhost:8000` (API docs at `/docs`)
