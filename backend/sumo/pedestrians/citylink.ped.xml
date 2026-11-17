@@ -1,0 +1,23 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- Pedestrian Crossings and Walks -->
+    <person id="ped_01" depart="0" type="pedestrian_default">
+        <walk edges="E_KOR_1 E_KOR_2" arrivalPos="40.0"/>
+    </person>
+    <person id="ped_02" depart="2" type="pedestrian_fast">
+        <walk edges="E_HSR_2 E_HSR_3" arrivalPos="35.0"/>
+    </person>
+    <person id="ped_03" depart="5" type="pedestrian_default">
+        <walk edges="E_BEL_1 E_BEL_4" arrivalPos="50.0"/>
+    </person>
+    <person id="ped_04" depart="8" type="pedestrian_fast">
+        <walk edges="E_SLK_2 E_SLK_3" arrivalPos="30.0"/>
+    </person>
+
+    <!-- Continuous Pedestrian Flows -->
+    <personFlow id="pflow_kor" begin="0" end="3600" period="20" type="pedestrian_default">
+        <walk edges="E_KOR_3 E_KOR_4"/>
+    </personFlow>
+    <personFlow id="pflow_slk" begin="0" end="3600" period="18" type="pedestrian_default">
+        <walk edges="E_SLK_1 E_SLK_2"/>
+    </personFlow>
+</routes>

@@ -1,0 +1,38 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- Vehicle Types -->
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="4.5" minGap="2.5" maxSpeed="16.6" color="0.23,0.51,0.96"/>
+    <vType id="bike" accel="3.2" decel="5.0" sigma="0.7" length="2.0" minGap="1.2" maxSpeed="13.8" color="0.06,0.72,0.50"/>
+    <vType id="bus" accel="1.8" decel="3.5" sigma="0.3" length="10.5" minGap="3.0" maxSpeed="12.0" color="0.96,0.62,0.04"/>
+    <vType id="truck" accel="1.5" decel="3.0" sigma="0.3" length="8.5" minGap="3.0" maxSpeed="11.0" color="0.42,0.45,0.50"/>
+    <vType id="emergency" accel="3.5" decel="5.5" sigma="0.1" length="5.0" minGap="2.0" maxSpeed="22.0" color="0.93,0.26,0.26" vClass="emergency"/>
+
+    <!-- Pedestrian Types -->
+    <vType id="pedestrian_default" vClass="pedestrian" width="0.6" length="0.6" minGap="0.4" maxSpeed="1.4"/>
+    <vType id="pedestrian_fast" vClass="pedestrian" width="0.6" length="0.6" minGap="0.4" maxSpeed="1.9"/>
+
+    <!-- Routes -->
+    <route id="route_koramangala_loop" edges="E_KOR_1 E_KOR_2 E_KOR_3 E_KOR_4"/>
+    <route id="route_hsr_loop" edges="E_HSR_1 E_HSR_2 E_HSR_3 E_HSR_4"/>
+    <route id="route_bellandur_loop" edges="E_BEL_1 E_BEL_2 E_BEL_3 E_BEL_4"/>
+    <route id="route_silkboard_loop" edges="E_SLK_1 E_SLK_2 E_SLK_3 E_SLK_4"/>
+
+    <!-- Inter-Zone Corridors -->
+    <route id="route_silk_to_bellandur" edges="E_SLK_2 E_INTER_SLK_BEL E_BEL_1"/>
+    <route id="route_bellandur_to_hsr" edges="E_BEL_3 E_INTER_BEL_HSR E_HSR_4"/>
+    <route id="route_hsr_to_koramangala" edges="E_HSR_1 E_INTER_HSR_KOR E_KOR_2"/>
+    <route id="route_koramangala_to_silk" edges="E_KOR_4 E_INTER_KOR_SLK E_SLK_3"/>
+
+    <!-- Initial Vehicle Fleet -->
+    <flow id="flow_car_kor" type="car" route="route_koramangala_loop" begin="0" end="3600" period="12"/>
+    <flow id="flow_car_hsr" type="car" route="route_hsr_loop" begin="0" end="3600" period="14"/>
+    <flow id="flow_car_bel" type="car" route="route_bellandur_loop" begin="0" end="3600" period="10"/>
+    <flow id="flow_car_slk" type="car" route="route_silkboard_loop" begin="0" end="3600" period="8"/>
+
+    <flow id="flow_bus_bel_slk" type="bus" route="route_silk_to_bellandur" begin="0" end="3600" period="45"/>
+    <flow id="flow_truck_hsr" type="truck" route="route_bellandur_to_hsr" begin="0" end="3600" period="60"/>
+    <flow id="flow_bike_all" type="bike" route="route_koramangala_to_silk" begin="0" end="3600" period="15"/>
+
+    <!-- Emergency Vehicle Priority Flow -->
+    <vehicle id="ambulance_01" type="emergency" route="route_silk_to_bellandur" depart="15"/>
+    <vehicle id="police_01" type="emergency" route="route_koramangala_to_silk" depart="35"/>
+</routes>
